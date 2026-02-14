@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Erica ❤️</title>
+    <style>
+        body {
+            background-color: #ffc0cb;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+            overflow-x: hidden;
+            transition: background-color 0.5s;
+        }
+        .container { padding: 20px; z-index: 10; width: 100%; max-width: 600px; box-sizing: border-box; }
+        .hidden { display: none !important; }
+        h1 { color: #d10056; text-shadow: 2px 2px white; }
+        
+        img {
+            max-width: 85%;
+            max-height: 400px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border: 5px solid white;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            object-fit: cover;
+        }
+
+        .btn-group { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; }
+        
+        button {
+            padding: 15px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 4px #d10056;
+            margin: 5px;
+        }
+        button:active { transform: translateY(4px); box-shadow: 0 0 #d10056; }
+
+        #yesBtn { background-color: #ff4d6d; color: white; font-weight: bold; position: relative; z-index: 100; }
+        #noBtn { background-color: #808080; color: white; position: relative; z-index: 100; }
+        
+        .quiz-option { display: block; width: 100%; background: white; color: #d10056; border: 2px solid #ff4d6d; }
+
+        .prize-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        .prize-card {
+            background: white; padding: 15px; border-radius: 15px; border: 2px dashed #ff4d6d;
+            font-size: 13px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .letter-paper {
+            background: #fffdf5; padding: 30px; border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: left; line-height: 1.6; color: #444; margin-bottom: 20px;
+            border-left: 5px solid #ffc0cb;
+        }
+
+        .gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 30px; }
+        .gallery img { width: 100px; height: 100px; object-fit: cover; margin: 0; border-width: 2px; }
+
+        .forced-yes { position: absolute; animation: pop 0.3s linear; z-index: 999; }
+        @keyframes pop { 0% { transform: scale(0); } 100% { transform: scale(1); } }
+    </style>
+</head>
+<body>
+
+    <div id="page1" class="container">
+        <h1 id="mainTitle">Will you be my Valentine, Erica?</h1>
+        <img id="mainImg" src="IMG_1289.jpg">
+        <div class="btn-group" id="mainButtons">
+            <button id="yesBtn" onclick="goToPage('page2')">YES</button>
+            <button id="noBtn" onclick="handleNo()">No</button>
+        </div>
+    </div>
+
+    <div id="page2" class="container hidden">
+        <h1>HEHE YAY! ❤️</h1>
+        <img src="IMG_3375.jpg">
+        <p>You're stuck with me now! Prove you're a giga-baddie in the quiz to unlock your rewards.</p>
+        <button id="yesBtn" onclick="goToPage('quizPage')">Start Quiz</button>
+    </div>
+
+    <div id="quizPage" class="container hidden">
+        <h2 id="questionNum">Question 1/4</h2>
+        <img id="quizImg" src="IMG_2475.jpg">
+        <h3 id="questionText"></h3>
+        <div id="options"></div>
+    </div>
+
+    <div id="prizePage" class="container hidden">
+        <h1>🏆 Your Baddie Rewards</h1>
+        <img src="IMG_5492.jpg" style="border-color: #ff0000;">
+        
+        <div class="prize-grid">
+            <div class="prize-card">💆‍♂️ <b>The Joel Special</b><br>One 30-minute fullbody massage</div>
+            <div class="prize-card">🍟 <b>Snack Voucher</b><br>Ketchup Chips, Fat Chef Puffs, or Rainbow Strips.</div>
+            <div class="prize-card">🥤 <b>Drink Voucher</b><br>One Strawberry Matcha or Avocado Milkshake.</div>
+            <div class="prize-card">💨 <b>Fart pass</b><br>Unlimited uses on Milky</div>
+            <div class="prize-card">🍣 <b>Sushi Date</b><br>A dinner date with your favorite food.</div>
+        </div>
+
+        <button id="yesBtn" style="margin-top:30px;" onclick="goToPage('letterPage')">Read My Love Letter 💌</button>
+        <button onclick="goToPage('galleryPage')">View Our Memories 📸</button>
+    </div>
+
+    <div id="letterPage" class="container hidden">
+        <h1>To my Giga-Baddie Erica,</h1>
+        <div class="letter-paper">
+            <p>Hi Erica,</p>
+            <p>I wanted to let you know that I love you so much. I’ve never written a love letter, but I hope this helps you feel maybe just 0.000000001% of how much I love you.</p>
+            <p>I miss you so much and I wish I could hug and cuddle with you. I’m sorry I couldn’t visit you this Valentines day, but I am excited to see you in a month.</p>
+            <p>I want you to know that I am choosing you and will keep choosing you everyday. You are such a bright light in my life and make my days so much brighter, happier, and more lovely. I hope you stay safe and are warm in Barcelona.</p>
+            <p>I love you so much,<br>Joel</p>
+        </div>
+        <button onclick="goToPage('prizePage')">Back to Prizes</button>
+    </div>
+
+    <div id="galleryPage" class="container hidden">
+        <h1>📸 Our Memory Gallery</h1>
+        <div class="gallery">
+            <img src="IMG_1289.jpg"> <img src="IMG_3661.jpg"> <img src="IMG_3654.jpg">
+            <img src="IMG_3477.jpg"> <img src="IMG_3378.jpg"> <img src="IMG_3375.jpg">
+            <img src="IMG_2475.jpg"> <img src="IMG_1292.jpg"> <img src="IMG_0501.jpg">
+            <img src="IMG_3507.jpg"> <img src="IMG_3502.jpg"> <img src="IMG_2489.jpg">
+            <img src="image_067b7e.jpg">
+        </div>
+        <button onclick="goToPage('prizePage')">Back</button>
+    </div>
+
+    <script>
+        let noCount = 0;
+        let yesSize = 18;
+        
+        const landingImages = ["IMG_1289.jpg", "IMG_3477.jpg", "IMG_3654.jpg", "IMG_1292.jpg"];
+        const messages = ["Are you sure?", "Look at the hat Erica...", "Please?", "STILL NO??"];
+
+        function handleNo() {
+            noCount++;
+            const yesBtn = document.getElementById('yesBtn');
+            const mainImg = document.getElementById('mainImg');
+            const mainTitle = document.getElementById('mainTitle');
+
+            if (noCount < 5) {
+                yesSize += 45;
+                yesBtn.style.fontSize = yesSize + "px";
+                if (noCount < landingImages.length) {
+                    mainImg.src = landingImages[noCount];
+                }
+                if (noCount <= messages.length) {
+                    mainTitle.innerText = messages[noCount - 1];
+                }
+            } else {
+                document.body.style.backgroundColor = "#ff4d6d";
+                document.getElementById('mainButtons').style.display = 'none';
+                mainTitle.innerText = "THERE IS NO ESCAPE";
+                for (let i = 0; i < 40; i++) {
+                    createForcedButton();
+                }
+            }
+        }
+
+        function createForcedButton() {
+            const btn = document.createElement('button');
+            btn.innerText = "YES";
+            btn.className = "forced-yes";
+            btn.style.left = Math.random() * 90 + "vw";
+            btn.style.top = Math.random() * 90 + "vh";
+            btn.onclick = () => goToPage('page2');
+            document.body.appendChild(btn);
+        }
+
+        function goToPage(pageId) {
+            const forced = document.querySelectorAll('.forced-yes');
+            forced.forEach(b => b.remove());
+
+            const containers = document.querySelectorAll('.container');
+            containers.forEach(p => p.classList.add('hidden'));
+            
+            const targetPage = document.getElementById(pageId);
+            if(targetPage) {
+                targetPage.classList.remove('hidden');
+            }
+
+            document.body.style.backgroundColor = "#ffc0cb";
+            window.scrollTo(0,0);
+
+            if(pageId === 'quizPage') loadQuestion();
+        }
+
+        // QUIZ LOGIC WITH CHANGING PHOTOS
+        let currentQuestion = 0;
+        const questions = [
+            { 
+                q: "Who is the gigaest baddie?", 
+                a: ["Erica Li", "Joel Kim", "Raymond Yang", "Nathan Cao"], 
+                correct: 0,
+                img: "IMG_2475.jpg" // Tongue out
+            },
+            { 
+                q: "Who is a mini-tripple baddie?", 
+                a: ["Joel Kim", "Erica Li", "Pabsssss", "Erica's Dad"], 
+                correct: 0,
+                img: "IMG_3507.jpg" // New photo 1
+            },
+            { 
+                q: "Who enjoys getting farted on?", 
+                a: ["Stacey", "Sharon", "Joel Minsu Kim", "Milky"], 
+                correct: 3,
+                img: "IMG_3502.jpg" // New photo 2
+            },
+            { 
+                q: "Did you take a shower today?", 
+                a: ["Yes", "No"], 
+                correct: 1,
+                img: "IMG_2489.jpg" // New photo 3
+            }
+        ];
+
+        function loadQuestion() {
+            const q = questions[currentQuestion];
+            document.getElementById('questionNum').innerText = `Question ${currentQuestion + 1}/4`;
+            document.getElementById('questionText').innerText = q.q;
+            document.getElementById('quizImg').src = q.img; // THIS LINE UPDATES THE PHOTO
+            
+            const optionsDiv = document.getElementById('options');
+            optionsDiv.innerHTML = '';
+
+            q.a.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.innerText = opt;
+                btn.className = 'quiz-option';
+                btn.onclick = () => {
+                    if(index === q.correct) {
+                        currentQuestion++;
+                        if(currentQuestion < questions.length) loadQuestion();
+                        else goToPage('prizePage');
+                    } else {
+                        alert("Mega, Please! Try again");
+                    }
+                };
+                optionsDiv.appendChild(btn);
+            });
+        }
+    </script>
+</body>
+</html> 
